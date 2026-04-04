@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLEX MART - Cart</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>FLEX MART</h1>
+    <div class="header-actions">
+      <button class="nav-link" onclick="window.location.href='index.html'">Home</button>
+      <button class="nav-link" onclick="window.location.href='cart.html'">Cart</button>
+      <button class="nav-link" onclick="window.location.href='checkout.html'">Checkout</button>
+      <button class="nav-link" onclick="openAiHelp()">AI Help</button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span class="toggle-icon" id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark</span>
+      </button>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <p class="badge">🛒 Shopping Cart</p>
+      <h2>Review & manage your items</h2>
+      <p class="subtext">Everything you've added in one place, ready for checkout anytime.</p>
+    </section>
+
+    <div id="message" class="message hidden"></div>
+    
+    <div class="cart-container">
+      <div class="cart-items-section">
+        <div id="cart" class="cart-list"></div>
+      </div>
+      
+      <aside class="cart-summary-sidebar">
+        <div class="summary-card">
+          <h3>Order Summary</h3>
+          <div class="summary-break">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="subtotal">₹0</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span>Free</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax (est.)</span>
+              <span>₹0</span>
+            </div>
+          </div>
+          <div class="summary-total">
+            <h2 id="total">Total: ₹0</h2>
+          </div>
+          <button class="primary-btn" onclick="checkout()">Proceed to Checkout →</button>
+          <button class="secondary-btn" style="width: 100%; margin-top: 10px;" onclick="window.location.href='index.html'">Continue Shopping</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="store.js"></script>
+  <script src="cart.js"></script>
+  <script src="ai.js"></script>
+
+  <div id="aiHelpModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeAiHelp()">×</button>
+      <h2>AI Product Assistant</h2>
+      <p>Ask any question about products, cart, payment, or orders and the AI will guide you.</p>
+      <div id="aiChatOutput" class="ai-chat-output"></div>
+      <div class="ai-input-row">
+        <input id="aiChatInput" type="text" placeholder="Describe your problem..." />
+        <button class="primary-btn" onclick="sendAiMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

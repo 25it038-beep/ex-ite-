@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You - FLEX MART</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
+  <style>
+    .thank-you-hero {
+      text-align: center;
+      padding: 90px 32px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      color: white;
+      animation: fadeInUp 1s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thank-you-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .thank-you-hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      margin-bottom: 16px;
+      animation: bounceIn 1.2s ease both 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .thank-you-hero p {
+      font-size: 18px;
+      margin-bottom: 32px;
+      opacity: 0.95;
+      animation: fadeIn 1s ease both 0.6s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .checkmark {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: checkmark 0.8s ease both 0.9s;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .checkmark::after {
+      content: '✓';
+      font-size: 48px;
+      color: var(--accent);
+      font-weight: bold;
+      animation: checkmarkFill 0.6s ease both 1.5s;
+    }
+
+    .back-btn {
+      background: white;
+      color: var(--accent);
+      border: none;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: fadeIn 1s ease both 1.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      margin-top: 40px;
+      animation: fadeInUp 1s ease both 1.5s;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .contact-icon-box {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--accent-glow), rgba(90,103,255,0.1));
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      transform: scale(0);
+      animation: scaleIn 0.6s ease both 1.7s;
+    }
+
+    .contact-section h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      margin: 0 0 20px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent-deep);
+      transform: scale(1.05);
+    }
+
+    .contact-icon {
+      font-size: 28px;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.3) rotate(-20deg); opacity: 0; }
+      50% { transform: scale(1.1); }
+      70% { transform: scale(0.95); }
+      100% { transform: scale(1) rotate(0); opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0) rotate(-30deg); }
+      to { transform: scale(1) rotate(0); }
+    }
+
+    @keyframes checkmarkFill {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes checkmark {
+      0% { transform: scale(0) rotate(-20deg); }
+      100% { transform: scale(1) rotate(0); }
+    }
+
+    /* Confetti animation */
+    .confetti {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      animation: fall 3s linear 1 forwards;
+      opacity: 1;
+    }
+
+    .confetti-piece:nth-child(odd) {
+      background: var(--success);
+    }
+
+    .confetti-piece:nth-child(3n) {
+      background: var(--accent);
+    }
+
+    .confetti-piece:nth-child(5n) {
+      background: var(--accent-glow);
+    }
+
+    @keyframes fall {
+      0% { 
+        transform: translateY(-100vh) rotate(0deg); 
+        opacity: 1;
+      }
+      100% { 
+        transform: translateY(100vh) rotate(360deg); 
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <h1>FLEX MART</h1>
+    <div class="header-actions">
+      <button class="nav-link" onclick="window.location.href='index.html'">Home</button>
+      <button class="nav-link" onclick="goToCart()">Cart</button>
+      <button class="nav-link" onclick="window.location.href='checkout.html'">Checkout</button>
+      <button class="nav-link" onclick="openAiHelp()">AI Help</button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span class="toggle-icon" id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark</span>
+      </button>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="thank-you-hero">
+      <div class="confetti" id="confetti"></div>
+      <div class="checkmark"></div>
+      <h1>Thank You for Your Purchase!</h1>
+      <p>We truly appreciate your business and hope you enjoy your items.</p>
+      <button class="back-btn" onclick="window.location.href='index.html'">Continue Shopping</button>
+    </section>
+
+    <section class="contact-section">
+      <h3>Need Help?</h3>
+      <div class="contact-icon-box">
+        <span class="contact-icon">📱</span>
+      </div>
+      <div class="contact-info">
+        <a href="tel:+917708930459">+91 7708930459</a>
+      </div>
+      <p style="text-align: center; color: var(--text2); margin: 0; font-size: 14px;">Feel free to reach out with any questions about your order. We're here to help!</p>
+    </section>
+  </main>
+
+  <script src="store.js"></script>
+  <script>
+    // Play celebration sound on page load
+    window.addEventListener('load', () => {
+      const preferredAudioUrl = "google_pay.mp3";
+      const fallbackAudioUrl = "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg";
+      const bonusAudioUrl = "event.mp3"; // additional feel-good tone
+
+      const play = url => {
+        const audio = new Audio(url);
+        audio.volume = 1.0;
+        return audio.play();
+      };
+
+      play(preferredAudioUrl)
+        .then(() => play(bonusAudioUrl).catch(err => console.warn("Bonus audio failed", err)))
+        .catch(err => {
+          console.warn("Storyblocks sound failed, using fallback audio", err);
+          play(fallbackAudioUrl)
+            .then(() => play(bonusAudioUrl).catch(err2 => console.warn("Bonus audio failed", err2)))
+            .catch(err2 => {
+              console.error("Fallback play failed", err2);
+              play(bonusAudioUrl).catch(err3 => console.error("Bonus audio failed", err3));
+            });
+        });
+    });
+
+    // Generate confetti
+    function createConfetti() {
+      const confetti = document.getElementById('confetti');
+      for (let i = 0; i < 50; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.animationDelay = Math.random() * 3 + 's';
+        piece.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        confetti.appendChild(piece);
+      }
+    }
+
+    createConfetti();
+
+    // Auto redirect after 5 seconds
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 5000);
+  </script>
+  <script src="ai.js"></script>
+
+  <div id="aiHelpModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeAiHelp()">×</button>
+      <h2>AI Product Assistant</h2>
+      <p>Ask any question about products, cart, payment, or orders and the AI will guide you.</p>
+      <div id="aiChatOutput" class="ai-chat-output"></div>
+      <div class="ai-input-row">
+        <input id="aiChatInput" type="text" placeholder="Describe your problem..." />
+        <button class="primary-btn" onclick="sendAiMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\BS.Harshan seliyan\OneDrive\Desktop\eeee\thank-you.html

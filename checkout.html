@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLEX MART - Checkout</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>FLEX MART</h1>
+    <div class="header-actions">
+      <button class="nav-link" onclick="window.location.href='index.html'">Home</button>
+      <button class="nav-link" onclick="window.location.href='cart.html'">Cart</button>
+      <button class="nav-link" onclick="window.location.href='checkout.html'">Checkout</button>
+      <button class="nav-link" onclick="openAiHelp()">AI Help</button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span class="toggle-icon" id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark</span>
+      </button>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="page-shell checkout-shell">
+    <section class="checkout-header">
+      <p class="badge">✅ Secure Checkout</p>
+      <h2>Complete your purchase</h2>
+      <p class="subtext">Review your items and delivery details before confirming.</p>
+    </section>
+
+    <div id="message" class="message hidden"></div>
+    
+    <div class="checkout-wrapper">
+      <div class="checkout-form-section">
+        <form id="checkoutForm">
+          <h3>Delivery Address</h3>
+          <input type="text" id="name" class="text-input" placeholder="Full Name" required>
+          <input type="text" id="address" class="text-input" placeholder="Street Address" required>
+          <input type="text" id="city" class="text-input" placeholder="City" required>
+          <input type="text" id="state" class="text-input" placeholder="State" required>
+          <input type="text" id="zip" class="text-input" placeholder="ZIP Code" required>
+          <input type="text" id="phone" class="text-input" placeholder="Phone Number" required>
+          
+          <h3 style="margin-top: 32px;">Payment Method</h3>
+          <select id="paymentMethod" class="text-input" required>
+            <option value="">Select Payment Method</option>
+            <option value="cod">Cash on Delivery</option>
+            <option value="upi">UPI</option>
+            <option value="card">Credit/Debit Card</option>
+          </select>
+          <button type="submit" class="primary-btn" style="margin-top: 24px;">Place Order →</button>
+        </form>
+        <div id="upiQrContainer" class="qr-container hidden"></div>
+      </div>
+      
+      <aside class="checkout-summary-sidebar">
+        <div class="summary-card">
+          <h3>Order Review</h3>
+          <div id="checkoutItems" class="checkout-items-preview"></div>
+          <div class="summary-break">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="checkoutSubtotal">₹0</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span class="free-tag">Free</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax (est.)</span>
+              <span id="checkoutTax">₹0</span>
+            </div>
+          </div>
+          <div class="summary-total">
+            <h2 id="checkoutTotal">Total: ₹0</h2>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="store.js"></script>
+  <script src="checkout.js"></script>
+  <script src="ai.js"></script>
+
+  <div id="aiHelpModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeAiHelp()">×</button>
+      <h2>AI Product Assistant</h2>
+      <p>Ask any question about products, cart, payment, or orders and the AI will guide you.</p>
+      <div id="aiChatOutput" class="ai-chat-output"></div>
+      <div class="ai-input-row">
+        <input id="aiChatInput" type="text" placeholder="Describe your problem..." />
+        <button class="primary-btn" onclick="sendAiMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<!-- Modal -->
+<div id="successModal" class="modal-overlay">
+  <div class="modal-content">
+    <h2>Order Placed Successfully!</h2>
+    <p>Your order has been confirmed. You will be redirected shortly.</p>
+  </div>
+</div>

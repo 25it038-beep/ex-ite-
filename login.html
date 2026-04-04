@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLEX MART - Login</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>FLEX MART</h1>
+    <div class="header-actions">
+      <button class="nav-link" onclick="window.location.href='login.html'">Login</button>
+      <button class="nav-link" onclick="window.location.href='index.html'">Home</button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span class="toggle-icon" id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="checkout-card auth-card">
+      <p class="badge">🔐 Secure Access</p>
+      <h2>Sign in to FLEX MART</h2>
+      <p class="subtext">Enter your email to continue shopping the finest collection.</p>
+      <div id="message" class="message hidden"></div>
+      <input id="emailInput" class="text-input" type="email" placeholder="you@example.com" autocomplete="email" />
+      <button class="primary-btn" onclick="login()">Continue →</button>
+      <p class="subtext" style="text-align:center; font-size:13px; margin:0; opacity: 0.7;">Press Enter after typing your email</p>
+    </section>
+  </main>
+
+  <script src="store.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

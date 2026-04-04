@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLEX MART</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>FLEX MART</h1>
+    <div class="header-actions">
+      <button class="nav-link" onclick="window.location.href='index.html'">Home</button>
+      <button class="nav-link" onclick="goToCart()">Cart</button>
+      <button class="nav-link" onclick="window.location.href='checkout.html'">Checkout</button>
+      <button class="nav-link" onclick="openAiHelp()">AI Help</button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span class="toggle-icon" id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark</span>
+      </button>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="badge">✨ Premium Collection</p>
+        <h2>Shop luxury essentials with confidence.</h2>
+        <p class="subtext">Modern designs, curated brands, and seamless checkout for a polished shopping experience.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="primary-btn" onclick="window.location.href='cart.html'">View Cart</button>
+        <button class="secondary-btn" onclick="document.getElementById('productSearch').focus()">Search Products</button>
+      </div>
+      <div class="search-box">
+        <input id="productSearch" class="text-input" type="search" placeholder="Search products, brands, or categories" oninput="onSearchInput(event)" />
+      </div>
+      <div id="typeNav" class="type-nav"></div>
+    </section>
+
+    <div id="message" class="message hidden"></div>
+    <div id="products" class="grid"></div>
+  </main>
+
+  <script src="store.js"></script>
+  <script src="script.js"></script>
+  <script src="ai.js"></script>
+
+  <div id="aiHelpModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeAiHelp()">×</button>
+      <h2>AI Product Assistant</h2>
+      <p>Ask any question about products, cart, payment, or orders and the AI will guide you.</p>
+      <div id="aiChatOutput" class="ai-chat-output"></div>
+      <div class="ai-input-row">
+        <input id="aiChatInput" type="text" placeholder="Describe your problem..." />
+        <button class="primary-btn" onclick="sendAiMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
